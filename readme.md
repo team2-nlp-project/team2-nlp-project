@@ -1,13 +1,12 @@
-## Team 2 NLP Project
 # Team 2 NLP Project
-Project Goals:
+## Project Goals:
 The goal of this project was to build a classification model that can predict the programming language of a repository based on the text of the repository's README.md file. 
 ***
 Project Goals/Description
 Most of the code hosting platforms for opensource projects consider the README file as the project introduction. As it is the first document seen by the reader, such a document needs to be crafted with care.  The goal of this project is to predict the programming language for 100 repository by scraping, analyze the repository's README file contents. Using these datasets from 100 README's we were able to predict what programming language was used based on the composition of the README text.
 *** 
 
-Project Outline:
+## Project Outline:
 * Acquisiton of data:
     * Search for repositories on git hub.
     * Conduct web scraping of repositories' readme contents.
@@ -39,7 +38,7 @@ Project Outline:
     * A final presentation on google slides. 
 
 ***
-Findings:
+## Findings:
 
 Data Wrangle:
 * Web scraped random respository README files. 
@@ -70,7 +69,7 @@ Modeling:
     * Test Dataset (unseen)
 ***
 Data Dictionary: 
-* 
+
 
 Project Replication
 * Download the acquire.py, prepare.py, explore.py, and model.py modules to your working directory.
@@ -81,6 +80,8 @@ Recommendations:
 * 
 * 
 * 
+
+
 Next Steps: 
 * 
 * 

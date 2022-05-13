@@ -12,6 +12,8 @@ from nltk.corpus import stopwords
 import pandas as pd
 # import acquire
 from time import strftime
+# impor for splitting
+from sklearn.model_selection import train_test_split
 
 # shh, down in front
 import warnings

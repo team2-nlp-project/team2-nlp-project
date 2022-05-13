@@ -48,10 +48,11 @@ Data Wrangle:
 * Split data into train, validate and test set
 ***
 Explore:
-* Question 1: 
-* Question 2: 
-* Question 3: 
-* Question 4: 
+* Question 1: What are the most common languages from the repos we explored?
+* Question 2: What are the most common words across all READme's?
+* Question 3: Does length of READme differ between languages
+* Question 4: Are there any words that are found in all repos?
+* Question 5: 
 ***
 Modeling:
 * Baseline Model:

@@ -118,7 +118,7 @@ def lemmatize(string):
 
 ################### CLEAN DATAFRAME ###################
 
-def clean_df(extra_words = [], exclude_words = []):
+def clean_df(extra_words = [], exclude_words = ['width100px', 'altbr', 'td', 'aligncentera']):
     # pull the data
     df = pd.read_json('data.json')
     # drops nulls

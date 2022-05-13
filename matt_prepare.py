@@ -12,7 +12,7 @@ from nltk.corpus import stopwords
 import pandas as pd
 # import acquire
 from time import strftime
-# impor for splitting
+# import for splitting
 from sklearn.model_selection import train_test_split
 
 # shh, down in front
@@ -119,6 +119,8 @@ def lemmatize(string):
 def clean_df(extra_words = [], exclude_words = []):
     # pull the data
     df = pd.read_json('data.json')
+    # drops nulls
+    df.dropna(inplace = True)
     # add clean column that applies basic clean function
     df['clean'] = df.readme_contents.apply(basic_clean)
     # tokenize df applied after running tokenize function
@@ -141,7 +143,7 @@ def split_data(df):
     original data frame.
     '''
     # Split with train being 80% and test being 20%. Stratify on target.
-    train, test = train_test_split(df, test_size = .2, random_state = 123, stratify = df.language)
+    train, test = train_test_split(df, test_size = .2, random_state = 123)
     # Split the remaining train into 70% train and 30% validate.
     train, validate = train_test_split(train, test_size = .3, random_state = 123)
     # Spiltting results in a split with 56% train, 24% validate, and 20% test data from original

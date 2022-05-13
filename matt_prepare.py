@@ -12,12 +12,14 @@ from nltk.corpus import stopwords
 import pandas as pd
 # import acquire
 from time import strftime
-# impor for splitting
+# import for splitting
 from sklearn.model_selection import train_test_split
 
 # shh, down in front
 import warnings
 warnings.filterwarnings('ignore')
+
+import numpy as np
 
 ################### ACQUIRE DATA ###################
 
@@ -119,6 +121,8 @@ def lemmatize(string):
 def clean_df(extra_words = [], exclude_words = ['width100px', 'altbr', 'td', 'aligncentera']):
     # pull the data
     df = pd.read_json('data.json')
+    # drops nulls
+    df.dropna(inplace = True)
     # add clean column that applies basic clean function
     df['clean'] = df.readme_contents.apply(basic_clean).apply(remove_stopwords)
     # tokenize df applied after running tokenize function
@@ -129,7 +133,11 @@ def clean_df(extra_words = [], exclude_words = ['width100px', 'altbr', 'td', 'al
     df['lemmatized'] = tokenized_df.apply(lemmatize)
     # create columns with character and word counts
     df = df.assign(character_count= df.lemmatized.str.len(), 
-             word_count=df.lemmatized.str.split().apply(len)) 
+             word_count=df.lemmatized.str.split().apply(len))
+    #create a variable that stores a list of the top five languages
+    top_five = ['JavaScript', 'Python', 'Java', 'TypeScript', 'C++']
+    #add a column to the dataframe where any language not in the top five is represented by 'other'
+    df['top_five_languages'] = np.where(df.language.isin(top_five), df.language, 'other') 
     return df
 
 ################### SPLIT THE DATA ###################

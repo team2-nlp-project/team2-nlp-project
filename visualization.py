@@ -64,3 +64,37 @@ def char_count(train):
     plt.ylim([0,17500])
     plt.xlim([0,1200])
     plt.show()
+    
+def char_count(train):
+    '''
+    This function takes in the train df and creates and df of the average character count and freq per language.   
+    '''
+
+    # creating df for character count and freq
+    character_count = pd.DataFrame(train.groupby('top_five_languages').character_count.mean().sort_values())
+    character_count['freq'] = round(character_count.character_count / character_count.character_count.sum(), 3)
+
+    # plotting viz
+    character_count.freq.plot.barh(color = ['bisque', 'wheat', 'lightsalmon', 'orange', \
+                                                    'coral','red'], figsize = (12, 7))
+    plt.title('By Average, JavaScript has the longest Character Count Across All Languages\n')
+    plt.ylabel('Languages')
+    plt.xlabel("The Frequency")
+    plt.show()
+    
+def word_count(train):
+    '''
+    This function takes in the train df and creates and df of the average word count and freq per language.
+    It the plots the language frequencies on a barplot and prints the results of the corresponding statistical 
+    test.
+    '''
+
+    # creating dfs for word count and freq
+    word_count = pd.DataFrame(train.groupby('top_five_languages').word_count.mean().sort_values())
+    word_count['freq'] = round(word_count.word_count / word_count.word_count.sum(), 3)
+
+    # plotting viz
+    word_count.freq.sort_values(ascending = True).plot.barh(color = ['bisque', 'wheat', 'lightsalmon', 'orange', \
+                                                    'coral','red'], figsize = (12, 7))
+    plt.title('JavaScript also has the Longest Word Count Among Languages')
+    plt.show()

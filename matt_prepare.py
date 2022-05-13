@@ -122,7 +122,7 @@ def clean_df(extra_words = [], exclude_words = []):
     # drops nulls
     df.dropna(inplace = True)
     # add clean column that applies basic clean function
-    df['clean'] = df.readme_contents.apply(basic_clean)
+    df['clean'] = df.readme_contents.apply(basic_clean).apply(remove_stopwords)
     # tokenize df applied after running tokenize function
     tokenized_df = df.clean.apply(tokenize)
     # stemmed column created from stem function

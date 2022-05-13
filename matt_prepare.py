@@ -129,3 +129,18 @@ def clean_df(extra_words = [], exclude_words = []):
     df = df.assign(character_count= df.lemmatized.str.len(), 
              word_count=df.lemmatized.str.split().apply(len)) 
     return df
+
+################### SPLIT THE DATA ###################
+
+def split_data(df):
+    '''
+    This function takes in a data frame and splits it appropriately in order
+    to return a train with 56%, validate with 24%, and test with 20% of the
+    original data frame.
+    '''
+    # Split with train being 80% and test being 20%. Stratify on target.
+    train, test = train_test_split(df, test_size = .2, random_state = 123, stratify = df.language)
+    # Split the remaining train into 70% train and 30% validate.
+    train, validate = train_test_split(train, test_size = .3, random_state = 123)
+    # Spiltting results in a split with 56% train, 24% validate, and 20% test data from original
+    return train, validate, test

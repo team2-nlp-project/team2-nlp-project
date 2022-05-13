@@ -116,11 +116,11 @@ def lemmatize(string):
 
 ################### CLEAN DATAFRAME ###################
 
-def clean_df(extra_words = [], exclude_words = []):
+def clean_df(extra_words = [], exclude_words = ['width100px', 'altbr', 'td', 'aligncentera']):
     # pull the data
     df = pd.read_json('data.json')
     # add clean column that applies basic clean function
-    df['clean'] = df.readme_contents.apply(basic_clean)
+    df['clean'] = df.readme_contents.apply(basic_clean).apply(remove_stopwords)
     # tokenize df applied after running tokenize function
     tokenized_df = df.clean.apply(tokenize)
     # stemmed column created from stem function
@@ -141,7 +141,7 @@ def split_data(df):
     original data frame.
     '''
     # Split with train being 80% and test being 20%. Stratify on target.
-    train, test = train_test_split(df, test_size = .2, random_state = 123, stratify = df.language)
+    train, test = train_test_split(df, test_size = .2, random_state = 123)
     # Split the remaining train into 70% train and 30% validate.
     train, validate = train_test_split(train, test_size = .3, random_state = 123)
     # Spiltting results in a split with 56% train, 24% validate, and 20% test data from original

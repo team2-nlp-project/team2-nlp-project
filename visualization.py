@@ -55,7 +55,10 @@ def word_cloud(train):
 
     return
 
-def char_count(train):
+
+
+
+def char_word(train):
     train_subset = train[(train['language'] =='Python') | 
                     (train['language'] =='Java')|
                     (train['language'] =='JavaScript')|

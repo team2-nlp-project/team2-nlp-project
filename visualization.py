@@ -118,10 +118,11 @@ def question3_stats(df):
     if p > alpha:
         print(f'r-value = {round(r,3)}')
         print(f'p-value = {round(p,3)}')
-        print('With an r-value of {r}, we fail to reject the null hypothesis\nthat there is no linear relationship between character count\nand word count.'.format(round(r,3)))
+        print('With an r-value of {}, we fail to reject the null hypothesis\nthat there is no linear relationship between character count\nand word count.'.format(round(r,3)))
     else:
         print(f'r-value = {round(r,3)}')
         print(f'p-value = {round(p,3)}')
         print('======================================================')
         print('With an r-value of {}, we reject the null hypthesis\nthat there is no linear relationship between character\ncount and word count.'.format(round(r,3)))
     return
+

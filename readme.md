@@ -5,7 +5,6 @@ The goal of this project was to build a classification model that can predict th
 Project Goals/Description
 Most of the code hosting platforms for opensource projects consider the README file as the project introduction. As it is the first document seen by the reader, such a document needs to be crafted with care.  The goal of this project is to predict the programming language for 100 repository by scraping, analyze the repository's README file contents. Using these datasets from 100 README's we were able to predict what programming language was used based on the composition of the README text.
 *** 
-
 ## Project Outline:
 * Acquisition of data:
     * Search for repositories on git hub.
@@ -36,7 +35,7 @@ Most of the code hosting platforms for opensource projects consider the README f
     * A README that explains what the project is, how to reproduce the project, and notes about the project.
     * A Python module or modules that automate the data acquisition and preparation process.
     * A final presentation on google slides. 
-
+***
 ## Data Dictionary 
 |Column | Description | Dtype|
 |--------- | --------- | ----------- |
@@ -60,7 +59,7 @@ top_five_languages | takes the five most popular languages, keeps them as their 
  C++ | C++ is a general-purpose programming language and widely used nowadays for competitive programming |  
  other | This column is comprised of all the other languages that did not fall within top 5 most frequent |   
     
-    
+***    
 ## Acquisition/Preparation:
 
 Data Wrangle:
@@ -118,6 +117,7 @@ Data Wrangle:
         - Accuracy on test data is 0.463
         - Our model outperforms the baseline by 10%
 
+***
 ## Project Replication
 * Download the acquire.py, prepare.py, explore.py, and model.py modules to your working directory.
 * Run the final_report.ipynb Juypter Notebook.

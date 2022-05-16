@@ -12,35 +12,41 @@ from sklearn.preprocessing import PolynomialFeatures
 from scipy.stats import pearsonr
 
 def top_languages(train):
+"""This function is to create a visual to show and get top five languages. """
 # creating language freq barplot (horizontal)
+
     train.language.value_counts(ascending = True, normalize = True).tail().plot.barh(color =\
                                                     ['bisque', 'wheat', 'lightsalmon', 'orange', \
                                                     'coral'],figsize = (12, 7))
 # adding title
     plt.xlabel('% of Languages',fontsize=12)# set up the x axis. 
     plt.ylabel('languages',fontsize=12)# set up the y axis
-    plt.title('Javascript and Python are the Most Popular Programming Languages\n',fontsize=15)
+    plt.title('Javascript and Python are the Most Popular Programming Languages\n',fontsize=15) # set up the title. 
     plt.show()
 
 
 def word_cloud(train):
+"""This function takes in a words_list and create a wordcloud"""
 
-    python_words = ''.join(str(train[train.language == 'Python'].lemmatized))
-    javascript_words = ''.join(str(train[train.language == 'JavaScript'].lemmatized))
-    c_words = ''.join(str(train[train.language == 'C++'].lemmatized))
-    java_words = ''.join(str(train[train.language == 'Java'].lemmatized))
-    typescript_words = ''.join(str(train[train.language == 'TypeScript'].lemmatized))
+    python_words = ''.join(str(train[train.language == 'Python'].lemmatized)) # create the list for python list. 
+    javascript_words = ''.join(str(train[train.language == 'JavaScript'].lemmatized)) #create the list for javascript list. 
+    c_words = ''.join(str(train[train.language == 'C++'].lemmatized)) #create the c word list. 
+    java_words = ''.join(str(train[train.language == 'Java'].lemmatized)) #create the java words list. 
+    typescript_words = ''.join(str(train[train.language == 'TypeScript'].lemmatized)) # create the typescript words list. 
 
 # generating text strings for each df
-    python_words = pd.Series(python_words.split()).value_counts()
-    javascript_words = pd.Series(javascript_words.split()).value_counts()
-    c_words = pd.Series(c_words.split()).value_counts()
-    java_words = pd.Series(java_words.split()).value_counts()
-    typescript_words = pd.Series(typescript_words.split()).value_counts()
+    python_words = pd.Series(python_words.split()).value_counts() #create the python words series. 
+    javascript_words = pd.Series(javascript_words.split()).value_counts() #create the javascript words series. 
+    c_words = pd.Series(c_words.split()).value_counts()  #create the c words series. 
+    java_words = pd.Series(java_words.split()).value_counts() #create java words series.
+    typescript_words = pd.Series(typescript_words.split()).value_counts() #create the typescript words
 
     word_counts = pd.concat([python_words, javascript_words, c_words, java_words, typescript_words], axis=1).fillna(0).astype(int)
+    #Fill the NA by 0. 
     word_counts.columns = ['python_words', 'javascript_words', 'c_words', 'java_words', 'typescript_words']
+    #Creating the list. 
     word_counts['all_words'] = word_counts.sum(axis=1)
+    #create the word counts by sum up all the words. 
     plt.figure(figsize=(12,6))
     wc = WordCloud(background_color="white", width=800, height=400, 
                        contour_width=1, contour_color='black'
@@ -48,10 +54,10 @@ def word_cloud(train):
     wc.generate_from_frequencies(word_counts['all_words'])                    
 
     # show
-    plt.title('Most Common Words Across all README')
-    plt.imshow(wc, interpolation="bilinear")
-    plt.axis("off")
-    plt.show()
+    plt.title('Most Common Words Across all README') #create the title.
+    plt.imshow(wc, interpolation="bilinear") #set up the imshow. 
+    plt.axis("off") #turn off the axis. 
+    plt.show()  # create the show. 
 
     return
 
@@ -59,22 +65,26 @@ def word_cloud(train):
 
 
 def char_word(train):
+    '''
+    This function takes in a dataframe
+    and the column you want to create the word counts of
+    returns a series of the words and their counts'''
     train_subset = train[(train['language'] =='Python') | 
                     (train['language'] =='Java')|
                     (train['language'] =='JavaScript')|
                     (train['language'] =='TypeScript')|
-                    (train['language'] =='C++')] 
-    plt.figure(figsize = (12, 8))
-    sns.regplot(data = train_subset, x = 'word_count', y = 'character_count',color="black",marker="+")
-    sns.scatterplot(data = train_subset, x = 'word_count', y = 'character_count',hue = 'language')
-    plt.title('Relationship Between Character Count and Word Count\n',fontsize=15)
+                    (train['language'] =='C++')] #Create the subset to to get the top languages. 
+    plt.figure(figsize = (12, 8))  #Show the plt figure
+    sns.regplot(data = train_subset, x = 'word_count', y = 'character_count',color="black",marker="+") #create a regplot. 
+    sns.scatterplot(data = train_subset, x = 'word_count', y = 'character_count',hue = 'language') #also create a scatterplot
+    plt.title('Relationship Between Character Count and Word Count\n',fontsize=15) #create a title. 
 
 
-    plt.legend(title='Languages',title_fontsize=15,loc='center left', bbox_to_anchor=(1, 0.9))
-    plt.grid()
-    plt.ylim([0,17500])
-    plt.xlim([0,1200])
-    plt.show()
+    plt.legend(title='Languages',title_fontsize=15,loc='center left', bbox_to_anchor=(1, 0.9)) #set legend. 
+    plt.grid() #plt the grid 
+    plt.ylim([0,17500]) #set the ylim.
+    plt.xlim([0,1200])  #set the xlim. 
+    plt.show() 
     
 def char_count(train):
     '''
@@ -82,16 +92,18 @@ def char_count(train):
     '''
 
     # creating df for character count and freq
-    character_count = pd.DataFrame(train.groupby('top_five_languages').character_count.mean().sort_values())
+    character_count = pd.DataFrame(train.groupby('top_five_languages').character_count.mean().sort_values()) 
+    #groupby the top languages and get the count mean. 
     character_count['freq'] = round(character_count.character_count / character_count.character_count.sum(), 3)
+    #also get the freq of the word count. 
 
     # plotting viz
     character_count.freq.plot.barh(color = ['bisque', 'wheat', 'lightsalmon', 'orange', \
                                                     'coral','red'], figsize = (12, 7))
-    plt.title('By Average, JavaScript has the longest Character Count Across All Languages\n')
-    plt.ylabel('Languages')
-    plt.xlabel("The Frequency")
-    plt.show()
+    plt.title('By Average, JavaScript has the longest Character Count Across All Languages\n')#create the title 
+    plt.ylabel('Languages') #set up the ylabel. 
+    plt.xlabel("The Frequency")  #set up the xlabel. 
+    plt.show() #show the plt. 
     
 def word_count(train):
     '''
@@ -107,10 +119,11 @@ def word_count(train):
     # plotting viz
     word_count.freq.sort_values(ascending = True).plot.barh(color = ['bisque', 'wheat', 'lightsalmon', 'orange', \
                                                     'coral','red'], figsize = (12, 7))
-    plt.title('JavaScript also has the Longest Word Count Among Languages')
+    plt.title('JavaScript also has the Longest Word Count Among Languages') #show the title. 
     plt.show()
 
 def question3_stats(df):
+    """This function is to create a stats test and get the P and r value"""
     # Set our alpha
     alpha = .01
     # Set what info we want and run Pearson's R on our two train sets

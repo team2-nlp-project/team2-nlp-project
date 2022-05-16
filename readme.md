@@ -37,28 +37,72 @@ Most of the code hosting platforms for opensource projects consider the README f
     * A Python module or modules that automate the data acquisition and preparation process.
     * A final presentation on google slides. 
 
-***
-## Findings:
+## Data Dictionary 
+   |Column | Description | Dtype|
+    |--------- | --------- | ----------- |
+    repo | Name of the Github repo used to extract data | object |
+    language | repo language used | object | 
+    readme_contents | Repo's README.md | object |
+    clean | removed inconsistencies in unicode characters from readme_contents. Converted the resulting string to the ASCII character set and turne dthe resulting bytes object back into a string | object |
+    stemmed | stemmed words from originial readme_contents | object
+    lemmatized | root words from the clean column | object |
+    character_count | counts the characters in the lemmatized column | int64 |
+    word_count | counts the words in the lemmatized column | int 64
+    top_five_languages | takes the five most popular languages, keeps them as their own, and bundles all other languages as 'other'. Used for modeling | object
+
+* Language Dictionary
+|Language | Description |
+ |--------- | --------- |
+ JavaScript | Object-oriented computer language commonly used to create interactive effects within web browsers |
+ Python | An interpreted, object-oriented, high-level programming langauage with dynamic semantics | 
+ Java | A general-purpose programming language that is class-based and object oriented| 
+ TypeScript | A language developed and maintained by Microsoft. It is a strict syntactical superset of JavaScript and adds optional static typing to the language |
+ C++ | C++ is a general-purpose programming language and widely used nowadays for competitive programming. |     
+    
+    
+## Acquisition/Preparation:
 
 Data Wrangle:
-* Web scraped random respository README files. 
-* Filtered out….
-* Remove….
-* Normalized, tokenized, stemmed and lemmatized the content for NLP
+* Web scraping methods were used to create a list from random respository README files. 
+    - The list of repositories was put into the acompanying acquire.py file which creates a list of dictionaries that includes the name of the repository, the programming language used in the repository, and the content of the readme file for each repository in the list, and saves it as a .json file. The .json file is required to reproduce this project with this notebook and can be created by saving the acquire.py file in your local repository and running 'python acquire.py' from the terminal.
+* Create a function in the matt_prepare.py file that does the following:
+    - Drops nulls and removes languages other than English
+    - Lowercase all letters
+    - Normalize text
+    - Create columns for stemmed data and lemmatized data
+    - Remove stopwords
+    - Adds column for character and word count
 * Split data into train, validate and test set
+    - Split 20% (test), 24% (validate), and 56% (train)
+* Test functions
 ***
-Explore:
-* Question 1: What are the most common languages from the repos we explored?
-* Question 2: What are the most common words across all READme's?
-* Question 3: Does length of READme differ between languages
-* Question 4: Are there any words that are found in all repos?
-* Question 5: 
+## Exploration:
+* Ask questions/form hypothesis
+    * Question 1: What are the most common languages from the repos we explored?
+    * Question 2: What are the most common words across all READme's?
+    * Question 3: Does length of READme differ between languages
+    * Question 4: Are there any words that are found in all repos?
+    * Question 5: 
+* Explore using visualizations:
+    - Create wordclouds
+    - Explore word frequencies
+    - Explore ngrams
+* Use statistical tests to test hypothesis
+    - Pearsonr test
+    - kruskal-wallis
+*  Document answers to questions and takeaways
+    - JavaScript and Python are the most popular programmig languages
+    - There are popular words across the top language README such as aligncenter, application, build, web ...
+    - There is a positive relationship between characer count vs. word count
+    - By average, JavaScript has the longest character count across all languages, followed by TypeScript
 ***
 Modeling:
 * Baseline Model:
     * 
 * Models created on cleaned, stemmed and lemmatized data:
-    * 
+    - Decision tree 
+    - Logistic regression 
+    - Random forest
 * Best Model:
 
 * Model testing:
@@ -68,8 +112,6 @@ Modeling:
     * 
 * Performance:
     * Test Dataset (unseen)
-***
-Data Dictionary: 
 
 
 Project Replication

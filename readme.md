@@ -38,7 +38,7 @@ Most of the code hosting platforms for opensource projects consider the README f
     * A final presentation on google slides. 
 
 ## Data Dictionary 
-   |Column | Description | Dtype|
+    |Column | Description | Dtype|
     |--------- | --------- | ----------- |
     repo | Name of the Github repo used to extract data | object |
     language | repo language used | object | 
@@ -51,7 +51,7 @@ Most of the code hosting platforms for opensource projects consider the README f
     top_five_languages | takes the five most popular languages, keeps them as their own, and bundles all other languages as 'other'. Used for modeling | object
 
 * Language Dictionary
-|Language | Description |
+ |Language | Description |
  |--------- | --------- |
  JavaScript | Object-oriented computer language commonly used to create interactive effects within web browsers |
  Python | An interpreted, object-oriented, high-level programming langauage with dynamic semantics | 
@@ -96,7 +96,7 @@ Data Wrangle:
     - There is a positive relationship between characer count vs. word count
     - By average, JavaScript has the longest character count across all languages, followed by TypeScript
 ***
-Modeling:
+## Modeling:
 * Baseline Model:
     * 
 * Models created on cleaned, stemmed and lemmatized data:
@@ -114,18 +114,28 @@ Modeling:
     * Test Dataset (unseen)
 
 
-Project Replication
+## Project Replication
 * Download the acquire.py, prepare.py, explore.py, and model.py modules to your working directory.
 * Run the final_report.ipynb Juypter Notebook.
+* Make a github personal access token.
+* Go here and generate a personal access token https://github.com/settings/tokens (don't need to select any scopes)
+* Create an env.py file in your working directory
+* Save the personal access token in your env.py file under the variable github_token
+* Add your github username to your env.py file under the variable github_username
+* Create a gitignore and add your env file to prevent your credentials from getting pushed to Github
+* Download the aquire.py and prepare.py files to your working directory
+* Download the final_report_team_2_nlp_project.ipynb notebook to your working directory
+* Read this README.md
+* Run the final_report_team_2_nlp_project.ipynb notebook
 
 ***
-Recommendations: 
+## Recommendations: 
 * 
 * 
 * 
 
 
-Next Steps: 
+## Next Steps: 
 * 
 * 
 * 

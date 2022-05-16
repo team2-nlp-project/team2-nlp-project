@@ -63,7 +63,6 @@ def word_cloud(train):
 
 
 
-
 def char_word(train):
     '''
     This function takes in a dataframe
@@ -142,3 +141,29 @@ def question3_stats(df):
         print('With an r-value of {}, we reject the null hypthesis\nthat there is no linear relationship between character\ncount and word count.'.format(round(r,3)))
     return
 
+def question4_stats(df):
+    # Set alpha
+    alpha = .01
+    # Define arguments for testing
+    python_length = train[train.top_five_languages == 'Python'].word_count
+    javascript_length = train[train.top_five_languages == 'JavaScript'].word_count
+    c_length = train[train.top_five_languages == 'C++'].word_count
+    java_length = train[train.top_five_languages == 'Java'].word_count
+    typescript_length = train[train.top_five_languages == 'TypeScript'].word_count
+    other_length = train[train.top_five_languages == 'other'].word_count
+    # Set info needed to run Kruskal-Wallis H-test using the above arguments
+    H, p = stats.kruskal(python_length, javascript_length, c_length, java_length, 
+                         typescript_length, other_length, nan_policy='omit')
+    # Set our parameters to print our conclusion
+    print(f'The findings of the ANOVA test are as follows:')
+    print('------------------------------------------------------')
+    if p < alpha:
+        print(f'H-statistic = {round(H,3)}')
+        print(f'p-value = {round(p,3)}')
+        print('With an p-value of {}, we fail to reject the null hypothesis\nthat there is no linear relationship between character count\nand word count.'.format(round(p,3)))
+    else:
+        print(f'H-statistic = {round(H,3)}')
+        print(f'p-value = {round(p,3)}')
+        print('======================================================')
+        print('With an p-value of {}, we reject the null hypthesis\nthat there is no linear relationship between character\ncount and word count.'.format(round(p,3)))
+    return

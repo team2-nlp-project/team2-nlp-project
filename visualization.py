@@ -135,7 +135,7 @@ def question3_spearman_stats(df):
     rho, p = spearmanr(df.character_count, df.word_count) 
     # Set our parameters to print our answer
     print(f'The findings of the Spearman\'s test are as follows:')
-    print('---------------------------------------------------')
+    print('----------------------------------------------------------------------')
     print(f'r-value = {round(rho,3)}')
     print(f'p-value = {round(p,3)}')
     print('=========================================================================')
@@ -151,27 +151,27 @@ def question4_word_stats(df):
     # Set alpha
     alpha = .01
     # Define arguments for testing
-    python_word = df[df.top_five_languages == 'Python'].word_count
-    javascript_word = df[df.top_five_languages == 'JavaScript'].word_count
-    c_word = df[df.top_five_languages == 'C++'].word_count
-    java_word = df[df.top_five_languages == 'Java'].word_count
-    typescript_word = df[df.top_five_languages == 'TypeScript'].word_count
-    other_word = df[df.top_five_languages == 'other'].word_count
+    python_length = df[df.top_five_languages == 'Python'].word_count
+    javascript_length = df[df.top_five_languages == 'JavaScript'].word_count
+    c_length = df[df.top_five_languages == 'C++'].word_count
+    java_length = df[df.top_five_languages == 'Java'].word_count
+    typescript_length = df[df.top_five_languages == 'TypeScript'].word_count
+    other_length = df[df.top_five_languages == 'other'].word_count
     # Set info needed to run Kruskal-Wallis H-test using the above arguments
-    H, p = stats.kruskal(python_word, javascript_word, c_word, java_word, 
-                         typescript_word, other_word, nan_policy='omit')
+    H, p = stats.kruskal(python_length, javascript_length, c_length, java_length, 
+                         typescript_length, other_length, nan_policy='omit')
     # Set our parameters to print our conclusion
-    print(f'The findings of the Kruskal-Wallis test are as follows:')
-    print('-------------------------------------------------------')
+    print(f'The findings of the ANOVA test are as follows:')
+    print('-------------------------------------------------------------------------')
     if p < alpha:
         print(f'H-statistic = {round(H,3)}')
         print(f'p-value = {round(p,3)}')
-        print('With an p-value of {}, we fail to reject the null hypothesis\nthat the population median for word count\nis equal for all languages.'.format(round(p,3)))
+        print('With an p-value of {}, we fail to reject the null hypothesis that there is no\nlinear relationship between character count and word count.'.format(round(p,3)))
     else:
         print(f'H-statistic = {round(H,3)}')
         print(f'p-value = {round(p,3)}')
-        print('=======================================================')
-        print('With an p-value of {}, we reject the null hypothesis\nthat the population median for word count is equal\nfor all languages.'.format(round(p,3)))
+        print('=========================================================================')
+        print('With an p-value of {}, we reject the null hypothesis that there is no\nlinear relationship between character count and word count.'.format(round(p,3)))
     return
 
 def question4_char_stats(df):
@@ -194,14 +194,14 @@ def question4_char_stats(df):
                          typescript_char, other_char, nan_policy='omit')
     # Set our parameters to print our conclusion
     print(f'The findings of the Kruskal-Wallis test are as follows:')
-    print('-------------------------------------------------------')
+    print('-------------------------------------------------------------------------')
     if p < alpha:
         print(f'H-statistic = {round(H,3)}')
         print(f'p-value = {round(p,3)}')
-        print('With an p-value of {}, we fail to reject the null hypothesis\nthat the population median for character count\nis equal for all languages.'.format(round(p,3)))
+        print('With an p-value of {}, we fail to reject the null hypothesis that the\npopulation median for character count is equal for all languages.'.format(round(p,3)))
     else:
         print(f'H-statistic = {round(H,3)}')
         print(f'p-value = {round(p,3)}')
-        print('=======================================================')
-        print('With an p-value of {}, we reject the null hypothesis\nthat the population median for character count is equal\nfor all languages.'.format(round(p,3)))
+        print('=========================================================================')
+        print('With an p-value of {}, we reject the null hypothesis that the\npopulation median for character count is equal for all languages.'.format(round(p,3)))
     return

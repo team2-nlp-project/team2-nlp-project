@@ -79,16 +79,15 @@ Data Wrangle:
 ## Exploration:
 * Ask questions/form hypothesis
     * Question 1: What are the most common languages from the repos we explored?
-    * Question 2: What are the most common words across all READme's?
-    * Question 3: Does length of READme differ between languages
-    * Question 4: Are there any words that are found in all repos?
+    * Question 2: What are the most common words across top languages README?
+    * Question 3: Is there any relation ship between char count and word count?
+    * Question 4: Does the length of the READme differ between languages?
  
 * Explore using visualizations:
     - Create wordclouds
     - Explore word frequencies
     - Explore ngrams
 * Use statistical tests to test hypothesis
-    - Pearsonr 
     - kruskal-wallis
     - Spearmans
 *  Document answers to questions and takeaways

@@ -38,17 +38,17 @@ Most of the code hosting platforms for opensource projects consider the README f
     * A final presentation on google slides. 
 
 ## Data Dictionary 
-    |Column | Description | Dtype|
-    |--------- | --------- | ----------- |
-    repo | Name of the Github repo used to extract data | object |
-    language | repo language used | object | 
-    readme_contents | Repo's README.md | object |
-    clean | removed inconsistencies in unicode characters from readme_contents. Converted the resulting string to the ASCII character set and turne dthe resulting bytes object back into a string | object |
-    stemmed | stemmed words from originial readme_contents | object |
-    lemmatized | root words from the clean column | object |
-    character_count | counts the characters in the lemmatized column | int64 |
-    word_count | counts the words in the lemmatized column | int 64 |
-    top_five_languages | takes the five most popular languages, keeps them as their own, and bundles all other languages as 'other'. Used for modeling | object |
+|Column | Description | Dtype|
+|--------- | --------- | ----------- |
+repo | Name of the Github repo used to extract data | object |
+language | repo language used | object | 
+readme_contents | Repo's README.md | object |
+clean | removed inconsistencies in unicode characters from readme_contents. Converted the resulting string to the ASCII character set and turne dthe resulting bytes object back into a string | object |
+stemmed | stemmed words from originial readme_contents | object |
+lemmatized | root words from the clean column | object |
+character_count | counts the characters in the lemmatized column | int64 |
+word_count | counts the words in the lemmatized column | int 64 |
+top_five_languages | takes the five most popular languages, keeps them as their own, and bundles all otherlanguages as 'other'. Used for modeling | object |
 
  Language Dictionary
  |Language | Description |

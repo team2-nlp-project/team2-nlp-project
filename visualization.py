@@ -156,12 +156,12 @@ def question4_stats(df):
     # Set alpha
     alpha = .01
     # Define arguments for testing
-    python_length = train[train.top_five_languages == 'Python'].word_count
-    javascript_length = train[train.top_five_languages == 'JavaScript'].word_count
-    c_length = train[train.top_five_languages == 'C++'].word_count
-    java_length = train[train.top_five_languages == 'Java'].word_count
-    typescript_length = train[train.top_five_languages == 'TypeScript'].word_count
-    other_length = train[train.top_five_languages == 'other'].word_count
+    python_length = df[df.top_five_languages == 'Python'].word_count
+    javascript_length = df[df.top_five_languages == 'JavaScript'].word_count
+    c_length = df[df.top_five_languages == 'C++'].word_count
+    java_length = df[df.top_five_languages == 'Java'].word_count
+    typescript_length = df[df.top_five_languages == 'TypeScript'].word_count
+    other_length = df[df.top_five_languages == 'other'].word_count
     # Set info needed to run Kruskal-Wallis H-test using the above arguments
     H, p = stats.kruskal(python_length, javascript_length, c_length, java_length, 
                          typescript_length, other_length, nan_policy='omit')

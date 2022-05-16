@@ -7,7 +7,7 @@ Most of the code hosting platforms for opensource projects consider the README f
 *** 
 
 ## Project Outline:
-* Acquisiton of data:
+* Acquisition of data:
     * Search for repositories on git hub.
     * Conduct web scraping of repositories' readme contents.
 * Prepare and clean data:
@@ -50,14 +50,15 @@ character_count | counts the characters in the lemmatized column | int64 |
 word_count | counts the words in the lemmatized column | int 64 |
 top_five_languages | takes the five most popular languages, keeps them as their own, and bundles all otherlanguages as 'other'. Used for modeling | object |
 
- Language Dictionary
+ ### Language Dictionary
  |Language | Description |
  |--------- | --------- |
  JavaScript | Object-oriented computer language commonly used to create interactive effects within web browsers |
  Python | An interpreted, object-oriented, high-level programming langauage with dynamic semantics | 
  Java | A general-purpose programming language that is class-based and object oriented| 
  TypeScript | A language developed and maintained by Microsoft. It is a strict syntactical superset of JavaScript and adds optional static typing to the language |
- C++ | C++ is a general-purpose programming language and widely used nowadays for competitive programming |     
+ C++ | C++ is a general-purpose programming language and widely used nowadays for competitive programming |  
+ other | This column is comprised of all the other languages that did not fall within top 5 most frequent |   
     
     
 ## Acquisition/Preparation:
@@ -66,7 +67,7 @@ Data Wrangle:
 * Web scraping methods were used to create a list from random respository README files. 
     - The list of repositories was put into the acompanying acquire.py file which creates a list of dictionaries that includes the name of the repository, the programming language used in the repository, and the content of the readme file for each repository in the list, and saves it as a .json file. The .json file is required to reproduce this project with this notebook and can be created by saving the acquire.py file in your local repository and running 'python acquire.py' from the terminal.
 * Create a function in the matt_prepare.py file that does the following:
-    - Drops nulls and removes languages other than English
+    - Drops nulls and removes all spoken languages other than English
     - Lowercase all letters
     - Normalize text
     - Create columns for stemmed data and lemmatized data
@@ -82,14 +83,15 @@ Data Wrangle:
     * Question 2: What are the most common words across all READme's?
     * Question 3: Does length of READme differ between languages
     * Question 4: Are there any words that are found in all repos?
-    * Question 5: 
+ 
 * Explore using visualizations:
     - Create wordclouds
     - Explore word frequencies
     - Explore ngrams
 * Use statistical tests to test hypothesis
-    - Pearsonr test
+    - Pearsonr 
     - kruskal-wallis
+    - Spearmans
 *  Document answers to questions and takeaways
     - JavaScript and Python are the most popular programmig languages
     - There are popular words across the top language README such as aligncenter, application, build, web ...
@@ -98,21 +100,23 @@ Data Wrangle:
 ***
 ## Modeling:
 * Baseline Model:
-    * 
+    * The baseline is determined off of the mode, which is the 'other' languages
+    * Baseline accuracy is 36%
 * Models created on cleaned, stemmed and lemmatized data:
     - Decision tree 
     - Logistic regression 
     - Random forest
 * Best Model:
-
+    - Our best model is logistic regression with a C value of 10 using unigrams and TfidVectorizer.
 * Model testing:
     * Train Dataset
-
+        - Accuracy on  train data is 0.993
     * Validate Dataset (unseen)
-    * 
+        - Accuracy on  validate data is 0.692
 * Performance:
     * Test Dataset (unseen)
-
+        - Accuracy on test data is 0.463
+        - Our model outperforms the baseline by 10%
 
 ## Project Replication
 * Download the acquire.py, prepare.py, explore.py, and model.py modules to your working directory.
@@ -129,13 +133,7 @@ Data Wrangle:
 * Run the final_report_team_2_nlp_project.ipynb notebook
 
 ***
-## Recommendations: 
-* 
-* 
-* 
-
-
-## Next Steps: 
-* 
-* 
-* 
+## Recommendations and next steps: 
+* Logistic regression was the best performing model when it comes to predicting programming language
+* With more time we would like to train the model on a larger dataset to improve prediction accuracy.
+* We would also work on improving our feature engineering to see if ngrams or other word combinations can better predict coding languages.

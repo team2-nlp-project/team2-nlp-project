@@ -12,13 +12,15 @@ from sklearn.preprocessing import PolynomialFeatures
 from scipy.stats import pearsonr
 
 def top_languages(train):
-"""This function is to create a visual to show and get top five languages. """
-# creating language freq barplot (horizontal)
+    """
+    This function is to create a visual to show and get top five languages. 
+    """
+    # creating language freq barplot (horizontal)
 
     train.language.value_counts(ascending = True, normalize = True).tail().plot.barh(color =\
                                                     ['bisque', 'wheat', 'lightsalmon', 'orange', \
                                                     'coral'],figsize = (12, 7))
-# adding title
+    # adding title
     plt.xlabel('% of Languages',fontsize=12)# set up the x axis. 
     plt.ylabel('languages',fontsize=12)# set up the y axis
     plt.title('Javascript and Python are the Most Popular Programming Languages\n',fontsize=15) # set up the title. 
@@ -26,7 +28,9 @@ def top_languages(train):
 
 
 def word_cloud(train):
-"""This function takes in a words_list and create a wordcloud"""
+    """
+    This function takes in a words_list and create a wordcloud
+    """
 
     python_words = ''.join(str(train[train.language == 'Python'].lemmatized)) # create the list for python list. 
     javascript_words = ''.join(str(train[train.language == 'JavaScript'].lemmatized)) #create the list for javascript list. 
@@ -34,7 +38,7 @@ def word_cloud(train):
     java_words = ''.join(str(train[train.language == 'Java'].lemmatized)) #create the java words list. 
     typescript_words = ''.join(str(train[train.language == 'TypeScript'].lemmatized)) # create the typescript words list. 
 
-# generating text strings for each df
+    # generating text strings for each df
     python_words = pd.Series(python_words.split()).value_counts() #create the python words series. 
     javascript_words = pd.Series(javascript_words.split()).value_counts() #create the javascript words series. 
     c_words = pd.Series(c_words.split()).value_counts()  #create the c words series. 
@@ -122,7 +126,9 @@ def word_count(train):
     plt.show()
 
 def question3_stats(df):
-    """This function is to create a stats test and get the P and r value"""
+    """This function runs a Pearson's r test in order to determine if there is a 
+    linear relationship between caharacter and word count for the data given.
+    """
     # Set our alpha
     alpha = .01
     # Set what info we want and run Pearson's R on our two train sets
@@ -142,6 +148,11 @@ def question3_stats(df):
     return
 
 def question4_stats(df):
+    """
+    This function defines arguments for the owrd count of the top 5 languages and
+    then runs a Kruskal-Wallis test in order to determine if there are significant 
+    differences between languages.
+    """
     # Set alpha
     alpha = .01
     # Define arguments for testing

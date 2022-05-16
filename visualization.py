@@ -9,7 +9,7 @@ from sklearn.feature_selection import SelectKBest, f_regression, RFE
 from sklearn.linear_model import LinearRegression, LassoLars, TweedieRegressor
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.preprocessing import PolynomialFeatures
-from scipy.stats import stats, pearsonr, kruskal
+from scipy.stats import stats, spearmanr, kruskal
 
 def top_languages(train):
     """
@@ -125,26 +125,21 @@ def word_count(train):
     plt.title('JavaScript also has the Longest Word Count Among Languages') #show the title. 
     plt.show()
 
-def question3_stats(df):
-    """This function runs a Pearson's r test in order to determine if there is a 
-    linear relationship between caharacter and word count for the data given.
+def question3_spearman_stats(df):
+    """This function runs a Spearman's r test in order to determine if there is a 
+    correlation between character and word count for the data given.
     """
     # Set our alpha
     alpha = .01
     # Set what info we want and run Pearson's R on our two train sets
-    r, p = pearsonr(df.character_count, df.word_count) 
+    rho, p = spearmanr(df.character_count, df.word_count) 
     # Set our parameters to print our answer
-    print(f'The findings of the Pearson\'s r test are as follows:')
-    print('------------------------------------------------------')
-    if p > alpha:
-        print(f'r-value = {round(r,3)}')
-        print(f'p-value = {round(p,3)}')
-        print('With an r-value of {}, we fail to reject the null hypothesis\nthat there is no linear relationship between character count\nand word count.'.format(round(r,3)))
-    else:
-        print(f'r-value = {round(r,3)}')
-        print(f'p-value = {round(p,3)}')
-        print('======================================================')
-        print('With an r-value of {}, we reject the null hypothesis\nthat there is no linear relationship between character\ncount and word count.'.format(round(r,3)))
+    print(f'The findings of the Spearman\'s test are as follows:')
+    print('---------------------------------------------------')
+    print(f'r-value = {round(rho,3)}')
+    print(f'p-value = {round(p,3)}')
+    print('=========================================================================')
+    print(f'From the output, we can conclude that the Spearman rank correlation is\n{round(rho,3)} suggesting a strong correlation while the corresponding p-value is\n{round(p,3)} meaning that this finding is statistically significant')
     return
 
 def question4_word_stats(df):

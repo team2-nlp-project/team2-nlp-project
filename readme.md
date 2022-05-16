@@ -38,26 +38,26 @@ Most of the code hosting platforms for opensource projects consider the README f
     * A final presentation on google slides. 
 
 ## Data Dictionary 
-   |Column | Description | Dtype|
-    |--------- | --------- | ----------- |
-    repo | Name of the Github repo used to extract data | object |
-    language | repo language used | object | 
-    readme_contents | Repo's README.md | object |
-    clean | removed inconsistencies in unicode characters from readme_contents. Converted the resulting string to the ASCII character set and turne dthe resulting bytes object back into a string | object |
-    stemmed | stemmed words from originial readme_contents | object
-    lemmatized | root words from the clean column | object |
-    character_count | counts the characters in the lemmatized column | int64 |
-    word_count | counts the words in the lemmatized column | int 64
-    top_five_languages | takes the five most popular languages, keeps them as their own, and bundles all other languages as 'other'. Used for modeling | object
+|Column | Description | Dtype|
+|--------- | --------- | ----------- |
+repo | Name of the Github repo used to extract data | object |
+language | repo language used | object | 
+readme_contents | Repo's README.md | object |
+clean | removed inconsistencies in unicode characters from readme_contents. Converted the resulting string to the ASCII character set and turne dthe resulting bytes object back into a string | object |
+stemmed | stemmed words from originial readme_contents | object |
+lemmatized | root words from the clean column | object |
+character_count | counts the characters in the lemmatized column | int64 |
+word_count | counts the words in the lemmatized column | int 64 |
+top_five_languages | takes the five most popular languages, keeps them as their own, and bundles all otherlanguages as 'other'. Used for modeling | object |
 
-* Language Dictionary
-|Language | Description |
+ Language Dictionary
+ |Language | Description |
  |--------- | --------- |
  JavaScript | Object-oriented computer language commonly used to create interactive effects within web browsers |
  Python | An interpreted, object-oriented, high-level programming langauage with dynamic semantics | 
  Java | A general-purpose programming language that is class-based and object oriented| 
  TypeScript | A language developed and maintained by Microsoft. It is a strict syntactical superset of JavaScript and adds optional static typing to the language |
- C++ | C++ is a general-purpose programming language and widely used nowadays for competitive programming. |     
+ C++ | C++ is a general-purpose programming language and widely used nowadays for competitive programming |     
     
     
 ## Acquisition/Preparation:
@@ -96,7 +96,7 @@ Data Wrangle:
     - There is a positive relationship between characer count vs. word count
     - By average, JavaScript has the longest character count across all languages, followed by TypeScript
 ***
-Modeling:
+## Modeling:
 * Baseline Model:
     * 
 * Models created on cleaned, stemmed and lemmatized data:
@@ -114,18 +114,28 @@ Modeling:
     * Test Dataset (unseen)
 
 
-Project Replication
+## Project Replication
 * Download the acquire.py, prepare.py, explore.py, and model.py modules to your working directory.
 * Run the final_report.ipynb Juypter Notebook.
+* Make a github personal access token.
+* Go here and generate a personal access token https://github.com/settings/tokens (don't need to select any scopes)
+* Create an env.py file in your working directory
+* Save the personal access token in your env.py file under the variable github_token
+* Add your github username to your env.py file under the variable github_username
+* Create a gitignore and add your env file to prevent your credentials from getting pushed to Github
+* Download the aquire.py and prepare.py files to your working directory
+* Download the final_report_team_2_nlp_project.ipynb notebook to your working directory
+* Read this README.md
+* Run the final_report_team_2_nlp_project.ipynb notebook
 
 ***
-Recommendations: 
+## Recommendations: 
 * 
 * 
 * 
 
 
-Next Steps: 
+## Next Steps: 
 * 
 * 
 * 

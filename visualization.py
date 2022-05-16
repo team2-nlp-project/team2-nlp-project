@@ -144,7 +144,7 @@ def question3_stats(df):
         print(f'r-value = {round(r,3)}')
         print(f'p-value = {round(p,3)}')
         print('======================================================')
-        print('With an r-value of {}, we reject the null hypthesis\nthat there is no linear relationship between character\ncount and word count.'.format(round(r,3)))
+        print('With an r-value of {}, we reject the null hypothesis\nthat there is no linear relationship between character\ncount and word count.'.format(round(r,3)))
     return
 
 def question4_word_stats(df):
@@ -176,7 +176,7 @@ def question4_word_stats(df):
         print(f'H-statistic = {round(H,3)}')
         print(f'p-value = {round(p,3)}')
         print('=======================================================')
-        print('With an p-value of {}, we reject the null hypthesis\nthat the population median for word count is equal\nfor all languages.'.format(round(p,3)))
+        print('With an p-value of {}, we reject the null hypothesis\nthat the population median for word count is equal\nfor all languages.'.format(round(p,3)))
     return
 
 def question4_char_stats(df):
@@ -208,5 +208,5 @@ def question4_char_stats(df):
         print(f'H-statistic = {round(H,3)}')
         print(f'p-value = {round(p,3)}')
         print('=======================================================')
-        print('With an p-value of {}, we reject the null hypthesis\nthat the population median for character count is equal\nfor all languages.'.format(round(p,3)))
+        print('With an p-value of {}, we reject the null hypothesis\nthat the population median for character count is equal\nfor all languages.'.format(round(p,3)))
     return

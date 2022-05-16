@@ -111,8 +111,7 @@ def char_count(train):
 def word_count(train):
     '''
     This function takes in the train df and creates and df of the average word count and freq per language.
-    It the plots the language frequencies on a barplot and prints the results of the corresponding statistical 
-    test.
+    It the plots the language frequencies on a barplot and prints the results of the corresponding statistical test.
     '''
 
     # creating dfs for word count and freq
@@ -129,7 +128,7 @@ def question3_spearman_stats(df):
     """This function runs a Spearman's r test in order to determine if there is a 
     correlation between character and word count for the data given.
     """
-    # Set our alpha
+    # Set alpha
     alpha = .01
     # Set what info we want and run Pearson's R on our two train sets
     rho, p = spearmanr(df.character_count, df.word_count) 
@@ -139,7 +138,16 @@ def question3_spearman_stats(df):
     print(f'r-value = {round(rho,3)}')
     print(f'p-value = {round(p,3)}')
     print('=========================================================================')
-    print(f'From the output, we can conclude that the Spearman rank correlation is\n{round(rho,3)} suggesting a strong correlation while the corresponding p-value is\n{round(p,3)} meaning that this finding is statistically significant')
+    if rho >= .7:
+        print(f'From the output, we can conclude that the Spearman rank correlation is\n{round(rho,3)} suggesting a strong positive correlation while the corresponding\np-value is {round(p,3)} meaning that this finding is statistically significant.')
+    elif rho < .7 & rho >=.35:
+        print(f'From the output, we can conclude that the Spearman rank correlation is\n{round(rho,3)} suggesting a weak positive correlation while the corresponding\np-value is {round(p,3)} meaning that this finding is statistically significant.') 
+    elif rho < .35 & rho >-.35:
+        print(f'From the output, we can conclude that the Spearman rank correlation is\n{round(rho,3)} suggesting little correlation while the corresponding\np-value is {round(p,3)} meaning that this finding is statistically significant.') 
+    elif rho < -.35 & rho >-.7:
+        print(f'From the output, we can conclude that the Spearman rank correlation is\n{round(rho,3)} suggesting a weak negative correlation while the corresponding\np-value is {round(p,3)} meaning that this finding is statistically significant.')
+    else:
+        print(f'From the output, we can conclude that the Spearman rank correlation is\n{round(rho,3)} suggesting a strong negative correlation while the corresponding\np-value is {round(p,3)} meaning that this finding is statistically significant.')
     return
 
 def question4_word_stats(df):
@@ -161,17 +169,17 @@ def question4_word_stats(df):
     H, p = stats.kruskal(python_length, javascript_length, c_length, java_length, 
                          typescript_length, other_length, nan_policy='omit')
     # Set our parameters to print our conclusion
-    print(f'The findings of the ANOVA test are as follows:')
+    print(f'The findings of the Kruskal-Wallis test are as follows:')
     print('-------------------------------------------------------------------------')
     if p < alpha:
         print(f'H-statistic = {round(H,3)}')
         print(f'p-value = {round(p,3)}')
-        print('With an p-value of {}, we fail to reject the null hypothesis that there is no\nlinear relationship between character count and word count.'.format(round(p,3)))
+        print(f'With an p-value of {round(p,3)}, we fail to reject the null hypothesis that there is no\nlinear relationship between character count and word count.')
     else:
         print(f'H-statistic = {round(H,3)}')
         print(f'p-value = {round(p,3)}')
         print('=========================================================================')
-        print('With an p-value of {}, we reject the null hypothesis that there is no\nlinear relationship between character count and word count.'.format(round(p,3)))
+        print(f'With an p-value of {round(p,3)}, we reject the null hypothesis that the\npopulation median for word count is equal for all languages.')
     return
 
 def question4_char_stats(df):
@@ -198,10 +206,11 @@ def question4_char_stats(df):
     if p < alpha:
         print(f'H-statistic = {round(H,3)}')
         print(f'p-value = {round(p,3)}')
-        print('With an p-value of {}, we fail to reject the null hypothesis that the\npopulation median for character count is equal for all languages.'.format(round(p,3)))
+        print(f'With an p-value of {round(p,3)}, we fail to reject the null hypothesis that \
+        the\npopulation median for character count is equal for all languages.')
     else:
         print(f'H-statistic = {round(H,3)}')
         print(f'p-value = {round(p,3)}')
         print('=========================================================================')
-        print('With an p-value of {}, we reject the null hypothesis that the\npopulation median for character count is equal for all languages.'.format(round(p,3)))
+        print(f'With an p-value of {round(p,3)}, we reject the null hypothesis that the\npopulation median for character count is equal for all languages.')
     return

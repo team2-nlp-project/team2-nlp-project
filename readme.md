@@ -44,20 +44,20 @@ Most of the code hosting platforms for opensource projects consider the README f
     language | repo language used | object | 
     readme_contents | Repo's README.md | object |
     clean | removed inconsistencies in unicode characters from readme_contents. Converted the resulting string to the ASCII character set and turne dthe resulting bytes object back into a string | object |
-    stemmed | stemmed words from originial readme_contents | object
+    stemmed | stemmed words from originial readme_contents | object |
     lemmatized | root words from the clean column | object |
     character_count | counts the characters in the lemmatized column | int64 |
-    word_count | counts the words in the lemmatized column | int 64
-    top_five_languages | takes the five most popular languages, keeps them as their own, and bundles all other languages as 'other'. Used for modeling | object
+    word_count | counts the words in the lemmatized column | int 64 |
+    top_five_languages | takes the five most popular languages, keeps them as their own, and bundles all other languages as 'other'. Used for modeling | object |
 
-* Language Dictionary
+ Language Dictionary
  |Language | Description |
  |--------- | --------- |
  JavaScript | Object-oriented computer language commonly used to create interactive effects within web browsers |
  Python | An interpreted, object-oriented, high-level programming langauage with dynamic semantics | 
  Java | A general-purpose programming language that is class-based and object oriented| 
  TypeScript | A language developed and maintained by Microsoft. It is a strict syntactical superset of JavaScript and adds optional static typing to the language |
- C++ | C++ is a general-purpose programming language and widely used nowadays for competitive programming. |     
+ C++ | C++ is a general-purpose programming language and widely used nowadays for competitive programming |     
     
     
 ## Acquisition/Preparation:

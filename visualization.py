@@ -22,7 +22,7 @@ def top_languages(train):
                                                     'coral'],figsize = (12, 7))
     # adding title
     plt.xlabel('% of Languages',fontsize=12)# set up the x axis. 
-    plt.ylabel('languages',fontsize=12)# set up the y axis
+    plt.ylabel('Languages',fontsize=12)# set up the y axis
     plt.title('Javascript and Python are the Most Popular Programming Languages\n',fontsize=15) # set up the title. 
     plt.show()
 
@@ -84,6 +84,8 @@ def char_word(train):
 
 
     plt.legend(title='Languages',title_fontsize=15,loc='center left', bbox_to_anchor=(1, 0.9)) #set legend. 
+    plt.xlabel('Word Count',fontsize=12)# set up the x axis. 
+    plt.ylabel('Character Count',fontsize=12)# set up the y axis
     plt.grid() #plt the grid 
     plt.ylim([0,17500]) #set the ylim.
     plt.xlim([0,1200])  #set the xlim. 
@@ -105,7 +107,7 @@ def char_count(train):
                                                     'coral','red'], figsize = (12, 7))
     plt.title('By Average, JavaScript has the longest Character Count Across All Languages\n')#create the title 
     plt.ylabel('Languages') #set up the ylabel. 
-    plt.xlabel("The Frequency")  #set up the xlabel. 
+    plt.xlabel("Frequency")  #set up the xlabel. 
     plt.show() #show the plt. 
     
 def word_count(train):

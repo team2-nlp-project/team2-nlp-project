@@ -153,4 +153,12 @@ def split_data(df):
     # Split the remaining train into 70% train and 30% validate.
     train, validate = train_test_split(train, test_size = .3, random_state = 123)
     # Spiltting results in a split with 56% train, 24% validate, and 20% test data from original
+    # View the row and column counts of the split dataframes
+    print(f'The split of this data results in the following:')
+    print('------------------------------------------------')
+    print(f'The train dataset contains {train.shape[0]} rows.')
+    print(f'The validate dataset contains {validate.shape[0]} rows.')
+    print(f'The test dataset contains {test.shape[0]} rows.')
+    print(f'All split datasets contain {train.shape[1]} columns.')
+    print('================================================')
     return train, validate, test

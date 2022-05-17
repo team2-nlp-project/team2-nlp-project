@@ -1,8 +1,9 @@
-# Team 2 NLP Project
+# <u>Predicting Programming Language of GitHub Repos<u>
 ## Project Goals:
 The goal of this project was to build a classification model that can predict the programming language of a repository based on the text of the repository's README.md file. 
 ***
-Project Goals/Description
+Project Goals/Description:
+
 Most of the code hosting platforms for opensource projects consider the README file as the project introduction. As it is the first document seen by the reader, such a document needs to be crafted with care.  The goal of this project is to predict the programming language for 100 repository by scraping, analyze the repository's README file contents. Using these datasets from 100 README's we were able to predict what programming language was used based on the composition of the README text.
 *** 
 ## Project Outline:
@@ -88,11 +89,11 @@ Data Wrangle:
     - Explore word frequencies
     - Explore ngrams
 * Use statistical tests to test hypothesis
-    - kruskal-wallis
+    - Kruskal-Wallis
     - Spearmans
 *  Document answers to questions and takeaways
     - JavaScript and Python are the most popular programmig languages
-    - There are popular words across the top language README such as aligncenter, application, build, web ...
+    - There are popular words across the top language README such as aligncenter, application, build, and web.
     - There is a positive relationship between characer count vs. word count
     - By average, JavaScript has the longest character count across all languages, followed by TypeScript
 ***

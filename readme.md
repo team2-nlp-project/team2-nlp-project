@@ -34,7 +34,7 @@ Most of the code hosting platforms for opensource projects consider the README f
     * A clearly named final notebook with more detailed processes. 
     * A README that explains what the project is, how to reproduce the project, and notes about the project.
     * A Python module or modules that automate the data acquisition and preparation process.
-    * A final presentation on google slides found at https://docs.google.com/presentation/d/1-s7c-QRWu4cizIU1hpqiCNL9bhI7fp06TcvM-xy7U9U/edit#slide=id.g11c3d1a7f31_0_2
+    * A final presentation on google slides found at https://tinyurl.com/yckr97a7
 ***
 ## Data Dictionary 
 |Column | Description | Dtype|
